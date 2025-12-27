@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('navbar') %>
+  
+    <div class="container">
+          <h1>Task List</h1>
+          <form action="/multi-delete" method="post">
+        <button class="delete-item" style="margin-bottom: 10px;">Delete Selected Task</button>
+        <ul class="task-list">
+        <% for(let item=0;item<result.length; item++){ %>
+         <li class="task-item">
+            <div class="task-title">
+                 <%= result[item].title %>
+            </div>
+           
+             <div class="task-discription">
+                 <%= result[item].discription %>
+            </div>
+             <input type="checkbox" name="selectedTask" value="<%= result[item]._id %>" id="">
+            <a class="delete-item" href="/delete/<%= result[item]._id %>">Delete</a>
+             <a class="update-item" href="/update/<%= result[item]._id %>">Update</a>
+         </li>
+
+       <% } %>
+       </ul>
+       </form>
+    </div>
+    
+</body>
+</html>
